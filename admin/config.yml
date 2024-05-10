@@ -1,0 +1,2501 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: gallery
+    label: Galleries
+    folder: cms/gallery
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_gallery-image
+        label: Gallery Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: gallery
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[gallery].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: categories
+    label: Categories
+    folder: cms/categories
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_picture
+        label: Picture
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_heading
+        label: Heading
+        widget: string
+        required: false
+      - hint: ''
+        name: f_products
+        label: products
+        widget: relation
+        required: false
+        collection: products
+        value_field: cms/products/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_index
+        label: index
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: categories
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[categories].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: products
+    label: Products
+    folder: cms/products
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Short description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_featured-on-home-marquee
+        label: featured on home marquee
+        widget: boolean
+        required: false
+        default: false
+      - hint: ''
+        name: f_home-indexing
+        label: home indexing
+        widget: number
+        required: false
+      - hint: ''
+        name: f_category
+        label: Category
+        widget: string
+        required: false
+      - hint: ''
+        name: f_heading
+        label: Heading
+        widget: string
+        required: false
+      - hint: ''
+        name: f_home-featured-product-picture
+        label: home featured product picture
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_pointer-1-2
+        label: Pointer 1
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_pointer-2
+        label: Pointer 2
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_pointer-3
+        label: Pointer 3
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_subheading-1
+        label: Subheading 1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_desc-1
+        label: Desc 1
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_subheading-2
+        label: Subheading 2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_desc-2
+        label: Desc 2
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_subheading-3
+        label: Subheading 3
+        widget: string
+        required: false
+      - hint: ''
+        name: f_desc-3
+        label: Desc 3
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_image-1
+        label: Image 1
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-2
+        label: Image 2
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-3
+        label: Image 3
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-4
+        label: Image 4
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-5
+        label: Image 5
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_image-6
+        label: Image 6
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_index
+        label: Index
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: products
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[products].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: post
+    label: Blog Posts
+    folder: cms/post
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Post Body
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_main-image
+        label: Main Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: Smaller version of main image that is used on blog post grid
+        name: f_thumbnail-image
+        label: Thumbnail image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_sub-heading
+        label: Sub Heading
+        widget: string
+        required: false
+      - hint: ''
+        name: f_sub-paragraph
+        label: Sub Paragraph
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_section-heading
+        label: Section heading
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: post
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[post].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: certificates
+    label: Certificates
+    folder: cms/certificates
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_indexing-numberee
+        label: Indexing Numberee
+        widget: number
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: certificates
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[certificates].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Call Us :83645904, key: -35209825'
+            label: Text
+            name: '-35209825'
+            widget: string
+          - hint: 'Original text: ( Sat - Thursday ), key: 50685868'
+            label: Text
+            name: '50685868'
+            widget: string
+          - hint: >-
+              Original text: No.5, Gowripuram Extension, 3rd Cross, key:
+              -2a6ce7bd
+            label: Text
+            name: '-2a6ce7bd'
+            widget: string
+          - hint: 'Original text: Anna Nagar, Karur, India., key: 4d393e6b'
+            label: Text
+            name: 4d393e6b
+            widget: string
+          - hint: 'Original text: Home, key: 2268ff'
+            label: Text
+            name: 2268ff
+            widget: string
+          - hint: 'Original text: About, key: 3c2336d'
+            label: Text
+            name: 3c2336d
+            widget: string
+          - hint: 'Original text: Products, key: -37f9ca7c'
+            label: Text
+            name: '-37f9ca7c'
+            widget: string
+          - hint: 'Original text: Quality Assurance, key: db0610c'
+            label: Text
+            name: db0610c
+            widget: string
+          - hint: 'Original text: Blog, key: 1fa3c2'
+            label: Text
+            name: 1fa3c2
+            widget: string
+          - hint: 'Original text: Certification, key: 934849a'
+            label: Text
+            name: 934849a
+            widget: string
+          - hint: 'Original text: Contact Us, key: 7f2746de'
+            label: Text
+            name: 7f2746de
+            widget: string
+          - hint: 'Original text: Get a Free Quote, key: -64b28a6f'
+            label: Text
+            name: '-64b28a6f'
+            widget: string
+          - hint: 'Original text: Our Commitment to Excellence, key: 5e154c8e'
+            label: Text
+            name: 5e154c8e
+            widget: string
+          - hint: 'Original text: Quality Assurance at , key: d510139'
+            label: Text
+            name: d510139
+            widget: string
+          - hint: 'Original text: Sree Angalamman Exports, key: 11c8f9c9'
+            label: Text
+            name: 11c8f9c9
+            widget: string
+          - hint: >-
+              Original text: Crafting Confidence in Every Product, key:
+              -69eed199
+            label: Text
+            name: '-69eed199'
+            widget: string
+          - hint: >-
+              Original text: At Sree Angalamman Exports, our passion for
+              perfection is woven into the fabric of everything we do. From the
+              initial design concept to the final product that arrives in your
+              home, our commitment to quality is unwavering. Our Quality
+              Assurance (QA) process is designed to ensure that every item not
+              only meets but exceeds our high standards and your expectations.,
+              key: 1b9102ff
+            label: Text
+            name: 1b9102ff
+            widget: text
+          - hint: 'Original text: Materials Selection, key: -599b89a8'
+            label: Text
+            name: '-599b89a8'
+            widget: string
+          - hint: >-
+              Original text: Every material we choose undergoes strict testing
+              for durability, colorfastness, and environmental impact, ensuring
+              only the best are used in our products., key: -1b5dfafb
+            label: Text
+            name: '-1b5dfafb'
+            widget: text
+          - hint: 'Original text: Production Oversight, key: -21e9e95e'
+            label: Text
+            name: '-21e9e95e'
+            widget: string
+          - hint: >-
+              Original text: During manufacturing, our QA team closely monitors
+              each step, applying meticulous attention to craftsmanship,
+              stitching, and finish., key: 38b56a22
+            label: Text
+            name: 38b56a22
+            widget: text
+          - hint: 'Original text: Safety Checks, key: 50593179'
+            label: Text
+            name: '50593179'
+            widget: string
+          - hint: >-
+              Original text: All our products are tested for safety, ensuring
+              they are free from harmful substances and comply with
+              international health standards., key: 3dfa56bd
+            label: Text
+            name: 3dfa56bd
+            widget: text
+          - hint: 'Original text: Our Quality Promise, key: -2820ee3a'
+            label: Text
+            name: '-2820ee3a'
+            widget: string
+          - hint: 'Original text: Your , key: 51a662d'
+            label: Text
+            name: 51a662d
+            widget: string
+          - hint: 'Original text: Assurance of Excellence, key: -576d48ea'
+            label: Text
+            name: '-576d48ea'
+            widget: string
+          - hint: 'Original text: Guarantee of Satisfaction, key: -7b7c9963'
+            label: Text
+            name: '-7b7c9963'
+            widget: string
+          - hint: >-
+              Original text: We stand behind every product with a promise of
+              satisfaction. If our products don’t meet your expectations in
+              terms of quality or performance, we’re here to make it right.,
+              key: -1dc14e52
+            label: Text
+            name: '-1dc14e52'
+            widget: text
+          - hint: 'Original text: Certifications of Trust, key: 354d2fd6'
+            label: Text
+            name: 354d2fd6
+            widget: string
+          - hint: >-
+              Original text: Our adherence to international quality standards is
+              confirmed by our ISO 9001-2009 certification, along with other
+              industry recognitions that speak volumes of our commitment to
+              quality., key: 8ad5f43
+            label: Text
+            name: 8ad5f43
+            widget: text
+          - hint: 'Original text: Transparency in Processes, key: -13e7ba56'
+            label: Text
+            name: '-13e7ba56'
+            widget: string
+          - hint: 'Original text: Open and , key: -2fe2f6e1'
+            label: Text
+            name: '-2fe2f6e1'
+            widget: string
+          - hint: 'Original text: Honest Communication, key: -2a518eab'
+            label: Text
+            name: '-2a518eab'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Transform Your Space & Style with , key: 7be711e'
+            label: Text
+            name: 7be711e
+            widget: string
+          - hint: >-
+              Original text: At Sree Angalamman Exports, we’re more than just
+              textiles; we’re about connections, stories, and dreams woven into
+              every fabric. Let’s find the perfect match for your home and
+              wardrobe together., key: 6d7a51fd
+            label: Text
+            name: 6d7a51fd
+            widget: text
+          - hint: 'Original text: Get in Touch, key: -53f399f2'
+            label: Text
+            name: '-53f399f2'
+            widget: string
+          - hint: >-
+              Original text: Tradition meets innovation in global textile
+              excellence since 1985., key: 53ae6113
+            label: Text
+            name: 53ae6113
+            widget: string
+          - hint: 'Original text: Quick Links, key: 15495b86'
+            label: Text
+            name: 15495b86
+            widget: string
+          - hint: 'Original text: About Us, key: 645efc51'
+            label: Text
+            name: 645efc51
+            widget: string
+          - hint: 'Original text: Contact us, key: 7f274abe'
+            label: Text
+            name: 7f274abe
+            widget: string
+          - hint: 'Original text: Address, key: 1ed033d4'
+            label: Text
+            name: 1ed033d4
+            widget: string
+          - hint: >-
+              Original text: No.5, Gowripuram Extension, 3rd Cross, Anna Nagar,
+              Karur, Tamilnadu,India., key: 1c999b9
+            label: Text
+            name: 1c999b9
+            widget: string
+          - hint: 'Original text: Contact, key: -64104400'
+            label: Text
+            name: '-64104400'
+            widget: string
+          - hint: 'Original text: +91 - 4324 241329, 241439,, key: -48c5b70d'
+            label: Text
+            name: '-48c5b70d'
+            widget: string
+          - hint: 'Original text: +91 - 4324 241639, key: 536443c'
+            label: Text
+            name: 536443c
+            widget: string
+          - hint: 'Original text: info@sreeangalamman.com, key: 3c2512d'
+            label: Text
+            name: 3c2512d
+            widget: string
+          - hint: >-
+              Original text: © 2024 Sree Angalamman Exports. All rights
+              reserved., key: 7cbcff2e
+            label: Text
+            name: 7cbcff2e
+            widget: string
+          - hint: 'Original text: Privacy Policy, key: -3fbde6f6'
+            label: Text
+            name: '-3fbde6f6'
+            widget: string
+          - hint: 'Original text: Terms of Service, key: -7fe2d65b'
+            label: Text
+            name: '-7fe2d65b'
+            widget: string
+          - hint: 'Original text: Welcome to Our Family, key: -50db26a1'
+            label: Text
+            name: '-50db26a1'
+            widget: string
+          - hint: >-
+              Original text: Bringing Comfort and Styles to Homes Since 1990,
+              key: 2309ed85
+            label: Text
+            name: 2309ed85
+            widget: string
+          - hint: >-
+              Original text: Welcome to See Angalamman Exports, where three
+              decades of dedication, expertise, and a commitment to excellence
+              have propelled us to the forefront of the textile industry. Since
+              our inception in 1985, we have been crafting exceptional handloom
+              and power loom fabrics and made-ups. In 1990, we embarked on an
+              exciting journey into the realm of export, sharing our
+              craftsmanship with the world., key: -7db06a83
+            label: Text
+            name: '-7db06a83'
+            widget: text
+          - hint: 'Original text: Our Craft, key: 40eac0c'
+            label: Text
+            name: 40eac0c
+            widget: string
+          - hint: >-
+              Original text: Since our inception, we have remained steadfast in
+              our dedication to crafting products of , key: 760acf14
+            label: Text
+            name: 760acf14
+            widget: string
+          - hint: 'Original text: unparalleled quality and style., key: -1d5cd5b8'
+            label: Text
+            name: '-1d5cd5b8'
+            widget: string
+          - hint: >-
+              Original text:  Our diverse range of home furnishing items, from
+              curtains to cushions, bed covers to bathmats, reflects both
+              timeless elegance and contemporary sophistication. Each piece is
+              meticulously crafted from the finest materials, ensuring
+              durability, comfort, and aesthetic appeal., key: -76c07f8f
+            label: Text
+            name: '-76c07f8f'
+            widget: text
+          - hint: 'Original text: Our commitment to excellence, key: 67754c4e'
+            label: Text
+            name: 67754c4e
+            widget: string
+          - hint: >-
+              Original text: At See Angalamman Exports, we understand the
+              importance of staying ahead of the curve. , key: -4ec2f60f
+            label: Text
+            name: '-4ec2f60f'
+            widget: string
+          - hint: >-
+              Original text: With a state-of-the-art infrastructure and a team
+              of skilled artisans, we have the capacity to meet the evolving
+              needs of our global clientele., key: b94065e
+            label: Text
+            name: b94065e
+            widget: text
+          - hint: >-
+              Original text:  Whether it's fulfilling bulk orders or delivering
+              bespoke designs, we pride ourselves on our ability to exceed
+              expectations, every time., key: 31135474
+            label: Text
+            name: '31135474'
+            widget: text
+          - hint: 'Original text: Why Choose Us, key: -32e31931'
+            label: Text
+            name: '-32e31931'
+            widget: string
+          - hint: >-
+              Original text: Choose See Angalamman Exports for top-tier home
+              furnishings. We deliver quality, style, and service in every
+              piece, backed by three decades of excellence., key: -72e8b96a
+            label: Text
+            name: '-72e8b96a'
+            widget: text
+          - hint: 'Original text: Our Management, key: -35727e29'
+            label: Text
+            name: '-35727e29'
+            widget: string
+          - hint: >-
+              Original text: Our management team is the driving force behind our
+              creative endeavours. They lead with passion and expertise,
+              orchestrating each project with care and vision. Together, we form
+              a cohesive unit, dedicated to crafting something wonderful for
+              your home., key: -44036832
+            label: Text
+            name: '-44036832'
+            widget: text
+          - hint: 'Original text: Our Promise to You, key: -124e54ed'
+            label: Text
+            name: '-124e54ed'
+            widget: string
+          - hint: >-
+              Original text: Looking ahead, we're excited to keep making
+              beautiful things for your home. We're all about staying true to
+              our roots while exploring new ways to be kinder to our planet and
+              bring you even more fabulous products., key: 1c71eeaa
+            label: Text
+            name: 1c71eeaa
+            widget: text
+          - hint: 'Original text: What We Do, key: -2f05211f'
+            label: Text
+            name: '-2f05211f'
+            widget: string
+          - hint: >-
+              Original text: We make and sell beautiful fabrics and home items
+              that make your space feel like home. , key: 7c40b7bc
+            label: Text
+            name: 7c40b7bc
+            widget: string
+          - hint: 'Original text: From cozy blankets to curtains, key: 5b0c3355'
+            label: Text
+            name: 5b0c3355
+            widget: string
+          - hint: >-
+              Original text:  that let just the right amount of light in, we
+              have something for everyone. We believe in the beauty of blending
+              old designs with new ones to create something unique – just for
+              you., key: -30ff00f
+            label: Text
+            name: '-30ff00f'
+            widget: text
+          - hint: >-
+              Original text: Our range is like a treasure trove of goodies for
+              every corner of your home. , key: -6db0dea3
+            label: Text
+            name: '-6db0dea3'
+            widget: string
+          - hint: >-
+              Original text: Kitchen linens, cozy cushions, soft bath towels —
+              you name it, key: -5fdf29d4
+            label: Text
+            name: '-5fdf29d4'
+            widget: string
+          - hint: >-
+              Original text: , we've poured our love into creating it. We pay
+              attention to the little details to ensure everything is just
+              right., key: -75b863b
+            label: Text
+            name: '-75b863b'
+            widget: text
+          - hint: 'Original text: Our Team, key: 290af1'
+            label: Text
+            name: 290af1
+            widget: string
+          - hint: >-
+              Original text: None of this would be possible without , key:
+              -53af11ca
+            label: Text
+            name: '-53af11ca'
+            widget: string
+          - hint: >-
+              Original text: our amazing team. They're the magicians behind the
+              scenes, key: -578515fd
+            label: Text
+            name: '-578515fd'
+            widget: string
+          - hint: >-
+              Original text: , crafting each piece with care and creativity.
+              We're a big family here, driven by a passion to create something
+              wonderful for your home., key: -b3e08f1
+            label: Text
+            name: '-b3e08f1'
+            widget: text
+          - hint: 'Original text: Our Partnerships & Commitments, key: -5b36c7f9'
+            label: Text
+            name: '-5b36c7f9'
+            widget: string
+          - hint: >-
+              Original text: Sree Angalamman Exports is honored to be associated
+              with prestigious organizations and councils that set the
+              benchmarks for quality, sustainability, and ethical practices in
+              the textile and export industries., key: 704cde3b
+            label: Text
+            name: 704cde3b
+            widget: text
+          - hint: 'Original text: Blogs &Insights, key: -7628aa4e'
+            label: Text
+            name: '-7628aa4e'
+            widget: string
+          - hint: 'Original text: Recent Blogs, key: 20c130c'
+            label: Text
+            name: 20c130c
+            widget: string
+          - hint: 'Original text: Send Enquiry, key: 1f74ec2b'
+            label: Text
+            name: 1f74ec2b
+            widget: string
+          - hint: 'Original text: Connect with Sales Executive, key: 30d573d0'
+            label: Text
+            name: 30d573d0
+            widget: string
+          - hint: 'Original text: More Products, key: 12d4f9cf'
+            label: Text
+            name: 12d4f9cf
+            widget: string
+          - hint: 'Original text: View all Categories, key: 7443f8d6'
+            label: Text
+            name: 7443f8d6
+            widget: string
+          - hint: 'Original text: Explore Our , key: -6d7f63ff'
+            label: Text
+            name: '-6d7f63ff'
+            widget: string
+          - hint: 'Original text: Elegance in Every Detail, key: -70b7bf57'
+            label: Text
+            name: '-70b7bf57'
+            widget: string
+          - hint: >-
+              Original text: Dive into our curated categories, where elegance
+              meets craftsmanship. Discover the perfect addition to your space.,
+              key: -22825a6d
+            label: Text
+            name: '-22825a6d'
+            widget: text
+          - hint: 'Original text: Let''s Connect, key: -46620def'
+            label: Text
+            name: '-46620def'
+            widget: string
+          - hint: 'Original text:  & Create Together, key: -8b7933c'
+            label: Text
+            name: '-8b7933c'
+            widget: string
+          - hint: >-
+              Original text: Have questions, ideas, or just want to say hello?
+              At Sree Angalamman Exports, we're always ready to listen and
+              assist. Whether you're inquiring about our products, interested in
+              a partnership, or need customer support, our team is here to
+              provide you with the information and help you need. Let's start a
+              conversation today, key: 7a0761e9
+            label: Text
+            name: 7a0761e9
+            widget: text
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form., key: -7c112e99
+            label: Text
+            name: '-7c112e99'
+            widget: string
+          - hint: 'Original text: Contact Number, key: 6ea9f389'
+            label: Text
+            name: 6ea9f389
+            widget: string
+          - hint: 'Original text: +91 - 4324 - 241329, key: 68eb546d'
+            label: Text
+            name: 68eb546d
+            widget: string
+          - hint: 'Original text: +91 - 4324 - 241639, key: 68eb5fcf'
+            label: Text
+            name: 68eb5fcf
+            widget: string
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: sreeangalamman@gmail.com, key: -5ed32247'
+            label: Text
+            name: '-5ed32247'
+            widget: string
+          - hint: 'Original text: Map, key: 12d3c'
+            label: Text
+            name: 12d3c
+            widget: string
+          - hint: 'Original text: No.5, Gowripuram Extension,, key: -73b1a002'
+            label: Text
+            name: '-73b1a002'
+            widget: string
+          - hint: 'Original text: 3rd Cross,Anna Nagar, Karur ,, key: 2655a7c5'
+            label: Text
+            name: 2655a7c5
+            widget: string
+          - hint: 'Original text: Tamilnadu - 639002., key: 4ff0322c'
+            label: Text
+            name: 4ff0322c
+            widget: string
+          - hint: 'Original text: INDIA., key: -7f030e09'
+            label: Text
+            name: '-7f030e09'
+            widget: string
+          - hint: 'Original text: What’s New !, key: 2239c43f'
+            label: Text
+            name: 2239c43f
+            widget: string
+          - hint: >-
+              Original text: Explore the art of home décor, fabric innovation,
+              and culinary delights with our expertly curated articles., key:
+              -44c1a2fc
+            label: Text
+            name: '-44c1a2fc'
+            widget: text
+          - hint: 'Original text: Our Certifications, key: 5265628d'
+            label: Text
+            name: 5265628d
+            widget: string
+          - hint: >-
+              Original text: Ensuring Quality, Upholding Standards, key:
+              -3da73650
+            label: Text
+            name: '-3da73650'
+            widget: string
+          - hint: >-
+              Original text: At Sree Angalamman Exports, we take pride in our
+              dedication to delivering only the highest quality home
+              furnishings. Our commitment to excellence is not just a promise
+              but is backed by rigorous standards and recognized through various
+              certifications. These acknowledgments serve as a testament to our
+              relentless pursuit of quality, sustainability, and customer
+              satisfaction., key: 686f2b14
+            label: Text
+            name: 686f2b14
+            widget: text
+          - hint: >-
+              Original text: Unveiling Excellence in Textile Exports with , key:
+              -13120956
+            label: Text
+            name: '-13120956'
+            widget: string
+          - hint: 'Original text: Sree Angalamman, key: -39023336'
+            label: Text
+            name: '-39023336'
+            widget: string
+          - hint: >-
+              Original text: Discover Sree Angalamman: Where textile tradition
+              meets sustainable excellence, key: 6a0ebfd8
+            label: Text
+            name: 6a0ebfd8
+            widget: string
+          - hint: 'Original text: Explore Our Collections, key: -81ea92c'
+            label: Text
+            name: '-81ea92c'
+            widget: string
+          - hint: >-
+              Original text: The Legacy of Sree Angalamman Exports, key:
+              -58506af8
+            label: Text
+            name: '-58506af8'
+            widget: string
+          - hint: >-
+              Original text: Dive into our journey from a humble beginning to
+              becoming a beacon of excellence in the textile industry., key:
+              -43eae843
+            label: Text
+            name: '-43eae843'
+            widget: text
+          - hint: 'Original text: Read More, key: 318af39f'
+            label: Text
+            name: 318af39f
+            widget: string
+          - hint: 'Original text: A Tapestry of , key: -1a7fe9ce'
+            label: Text
+            name: '-1a7fe9ce'
+            widget: string
+          - hint: 'Original text: Comfort !, key: 12f2c6ad'
+            label: Text
+            name: 12f2c6ad
+            widget: string
+          - hint: >-
+              Original text: Explore our vast array of home furnishing items,
+              each a testament to classic elegance and modern functionality,
+              key: -276053bc
+            label: Text
+            name: '-276053bc'
+            widget: text
+          - hint: 'Original text: 01, key: 601'
+            label: Text
+            name: '601'
+            widget: string
+          - hint: 'Original text: Unmatched Quality, key: -1797d9f6'
+            label: Text
+            name: '-1797d9f6'
+            widget: string
+          - hint: >-
+              Original text: Just like a harmonious marriage blends , key:
+              -523b7343
+            label: Text
+            name: '-523b7343'
+            widget: string
+          - hint: >-
+              Original text: strengths and beauties, our products represent the
+              pinnacle of craftsmanship and materials., key: 461d36f
+            label: Text
+            name: 461d36f
+            widget: text
+          - hint: 'Original text: 02, key: 602'
+            label: Text
+            name: '602'
+            widget: string
+          - hint: 'Original text: Tailored Elegance, key: -5d05a15a'
+            label: Text
+            name: '-5d05a15a'
+            widget: string
+          - hint: >-
+              Original text: In marriage, the beauty lies in the details
+              tailored to fit two unique individuals. Our approach to design
+              mirrors this personalization, offering products that not only
+              enhance spaces but also resonate with personal styles and dreams.,
+              key: -733e049c
+            label: Text
+            name: '-733e049c'
+            widget: text
+          - hint: 'Original text: 03, key: 603'
+            label: Text
+            name: '603'
+            widget: string
+          - hint: 'Original text: Empowering Communities, key: -3382abf4'
+            label: Text
+            name: '-3382abf4'
+            widget: string
+          - hint: >-
+              Original text: We’re committed to empowering the local communities
+              that are the backbone of our industry, ensuring they thrive along
+              with us., key: -75779ea9
+            label: Text
+            name: '-75779ea9'
+            widget: text
+          - hint: 'Original text: 04, key: 604'
+            label: Text
+            name: '604'
+            widget: string
+          - hint: 'Original text: Preserving Traditional Crafts, key: 22283483'
+            label: Text
+            name: '22283483'
+            widget: string
+          - hint: >-
+              Original text: Our work goes beyond exports. We’re guardians of
+              India’s rich textile heritage, actively preserving and promoting
+              traditional crafts on the globalstage., key: -63279d22
+            label: Text
+            name: '-63279d22'
+            widget: text
+          - hint: 'Original text: We Follow, key: 79a1fd43'
+            label: Text
+            name: 79a1fd43
+            widget: string
+          - hint: >-
+              Original text: We adhere to strict international standards to
+              deliver excellence in every piece., key: 3cee9c97
+            label: Text
+            name: 3cee9c97
+            widget: string
+          - hint: 'Original text: Transparency, key: -6bc56088'
+            label: Text
+            name: '-6bc56088'
+            widget: string
+          - hint: 'Original text: Ethical Practices, key: -13f6436a'
+            label: Text
+            name: '-13f6436a'
+            widget: string
+          - hint: 'Original text: Powered by the Sun:, key: 7c4079aa'
+            label: Text
+            name: 7c4079aa
+            widget: string
+          - hint: 'Original text:  Our Sustainable Promise, key: 597726a4'
+            label: Text
+            name: 597726a4
+            widget: string
+          - hint: 'Original text: Eco-friendly Production, key: 56fa4f12'
+            label: Text
+            name: 56fa4f12
+            widget: string
+          - hint: >-
+              Original text: Sree Angalamman Exports harnesses the abundant
+              power of the sun, reducing reliance on non-renewable energy
+              sources., key: 43689a16
+            label: Text
+            name: 43689a16
+            widget: text
+          - hint: >-
+              Original text: Our state-of-the-art solar panels capture clean
+              energy to power the heart of our textile operations., key:
+              -681ccb71
+            label: Text
+            name: '-681ccb71'
+            widget: text
+          - hint: 'Original text: Brighter Future, key: -4a1c1524'
+            label: Text
+            name: '-4a1c1524'
+            widget: string
+          - hint: >-
+              Original text: LED lighting throughout our facility is powered by
+              solar energy, ensuring operations are brightened sustainably.,
+              key: 591ab79d
+            label: Text
+            name: 591ab79d
+            widget: text
+          - hint: >-
+              Original text: This transition to solar reduces our carbon
+              footprint, setting a precedent in the textile industry for
+              environmental responsibility., key: -4e78a9cb
+            label: Text
+            name: '-4e78a9cb'
+            widget: text
+          - hint: >-
+              Original text: Behind every product lies our commitment to ethical
+              practices, quality craftsmanship, and a greener planet., key:
+              -1f7251d5
+            label: Text
+            name: '-1f7251d5'
+            widget: text
+          - hint: 'Original text: Step 1, key: -6bcb8c03'
+            label: Text
+            name: '-6bcb8c03'
+            widget: string
+          - hint: 'Original text: Start with a Conversation, key: -4bb7c42'
+            label: Text
+            name: '-4bb7c42'
+            widget: string
+          - hint: >-
+              Original text: Dialogue shapes your customized textile experience,
+              key: -c609853
+            label: Text
+            name: '-c609853'
+            widget: string
+          - hint: 'Original text: Step 2, key: -6bcb8c02'
+            label: Text
+            name: '-6bcb8c02'
+            widget: string
+          - hint: 'Original text: Quality That Speaks, key: 12b6fdb9'
+            label: Text
+            name: 12b6fdb9
+            widget: string
+          - hint: >-
+              Original text: Superior craftsmanship in every sustainable textile
+              produced., key: -4c503138
+            label: Text
+            name: '-4c503138'
+            widget: string
+          - hint: 'Original text: Step 3, key: -6bcb8c01'
+            label: Text
+            name: '-6bcb8c01'
+            widget: string
+          - hint: 'Original text: Ordering Made Easy, key: -65ae6aff'
+            label: Text
+            name: '-65ae6aff'
+            widget: string
+          - hint: >-
+              Original text: Seamless, efficient process for your textile
+              needs., key: -9a9ca9
+            label: Text
+            name: '-9a9ca9'
+            widget: string
+          - hint: 'Original text: Step 4, key: -6bcb8c00'
+            label: Text
+            name: '-6bcb8c00'
+            widget: string
+          - hint: 'Original text: Continuous Support, key: 74acc3be'
+            label: Text
+            name: 74acc3be
+            widget: string
+          - hint: >-
+              Original text: Ongoing assistance ensuring your complete
+              satisfaction., key: 61661906
+            label: Text
+            name: '61661906'
+            widget: string
+          - hint: 'Original text: “Beyond Expectations”, key: 295bdb11'
+            label: Text
+            name: 295bdb11
+            widget: string
+          - hint: >-
+              Original text: "I've been a loyal customer of Sree Angalamman
+              Exports for years, and their products never cease to amaze me.
+              From the moment I received my first order, I was very satisfied,
+              key: 9b4720e
+            label: Text
+            name: 9b4720e
+            widget: text
+          - hint: 'Original text: Sabeer Khan, key: 374775ac'
+            label: Text
+            name: 374775ac
+            widget: string
+          - hint: 'Original text: Satisfied Customer, key: -2117fbb4'
+            label: Text
+            name: '-2117fbb4'
+            widget: string
+          - hint: 'Original text: “Exceptional Quality”, key: -54fc6200'
+            label: Text
+            name: '-54fc6200'
+            widget: string
+          - hint: >-
+              Original text: As an interior designer, I'm always on the lookout
+              for unique pieces that can elevate my projects and leave a lasting
+              impression on my clients. Sree Angalamman Exports has been my
+              secret weapon for achieving just that., key: 26353115
+            label: Text
+            name: '26353115'
+            widget: text
+          - hint: 'Original text: Mohammad , key: -3386fa9e'
+            label: Text
+            name: '-3386fa9e'
+            widget: string
+          - hint: 'Original text: “Elegance Redefined”, key: 62ce7593'
+            label: Text
+            name: 62ce7593
+            widget: string
+          - hint: >-
+              Original text: Sree Angalamman Exports transformed our boutique
+              hotel with unparalleled elegance. Their exceptional craftsmanship
+              and service elevated our vision, delighting guests and partners
+              alike., key: 1d1eca00
+            label: Text
+            name: 1d1eca00
+            widget: text
+          - hint: 'Original text: Chandralekha, key: -6c3a19b6'
+            label: Text
+            name: '-6c3a19b6'
+            widget: string
+          - hint: 'Original text: Satified Customer, key: 641c939'
+            label: Text
+            name: 641c939
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /about-us/, key: -766f6c3e'
+            label: Link
+            name: '-766f6c3e'
+            widget: string
+          - hint: 'Original link: /products-list/, key: 2a702f97'
+            label: Link
+            name: 2a702f97
+            widget: string
+          - hint: 'Original link: /old-home/, key: -d324b45'
+            label: Link
+            name: '-d324b45'
+            widget: string
+          - hint: 'Original link: /blog-main/, key: d35051a'
+            label: Link
+            name: d35051a
+            widget: string
+          - hint: 'Original link: /certificates/, key: 514d4a24'
+            label: Link
+            name: 514d4a24
+            widget: string
+          - hint: 'Original link: /contact-us/, key: 6bfbaa95'
+            label: Link
+            name: 6bfbaa95
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: i63557c28
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i604057f0
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i61aebb0a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i61a0a389
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i61928c08
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i61847487
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i604e6f71
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 26d45e7d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 151c0708
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6d654bd2
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i3bbc19eb
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6b27da74
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2abc3b99
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i26d7522c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i196eb39b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i66bf2d66
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6550ca4c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i65349b4a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 74e3e9a5
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6f761f6f
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 6f6807ee
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 433f0ce7
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 5e61d6db
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 39edc75a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i51bab444
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i19528499
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i19609c1a
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3b08d524
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: i6fac65e9
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4411b338
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-191a2695'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-19283e16'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2184e968'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 26c646fc
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-64ae1cfd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-258ce14a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-529d970d'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3da56eb2'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1ad73d05'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4bc51933
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7f14e4f9
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1d96ca5c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-46d64720'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-64ee25c5'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-63aa092e'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-18c36e5b'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6371ab2a'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-51aea8bd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-63557c28'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1add16b5'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1aceff34'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1998fa1e'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-198ae29d'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-1f8299d7'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-19365597'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 317f733b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-cc1f907'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 671c3a1b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 14549d8d
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-753babce'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6c912bbd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2915a584
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4eda38b6
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 635700c4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4ebe09b4
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 1beb463b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-416cf5ea'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 7b088c87
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
