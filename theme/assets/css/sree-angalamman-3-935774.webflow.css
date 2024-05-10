@@ -3397,7 +3397,7 @@ body {
 }
 
 .intro-wrapper {
-  display: none;
+  display: flex;
 }
 
 .intro {
@@ -4989,7 +4989,7 @@ body {
   }
 
   .intro-wrapper {
-    display: none;
+    display: flex;
   }
 
   .intro {
@@ -6623,7 +6623,7 @@ body {
   }
 
   .intro-wrapper {
-    display: none;
+    display: flex;
   }
 
   .intro-image {
@@ -6693,15 +6693,7 @@ body {
   justify-self: center;
 }
 
-#w-node-_24277b19-64a0-a7ab-c129-176e279452c4-60450e31 {
-  grid-area: span 1 / span 1 / span 1 / span 1;
-}
-
-#w-node-_00e28e2b-909f-d350-7520-dc2ffca54ff5-a23b8dd4 {
-  justify-self: center;
-}
-
-#w-node-_4214ed47-adb2-7d22-77ee-a27a5d39c075-a23b8dd4 {
+#w-node-_24277b19-64a0-a7ab-c129-176e279452c4-60450e31, #w-node-_4214ed47-adb2-7d22-77ee-a27a5d39c075-a23b8dd4 {
   grid-area: span 1 / span 1 / span 1 / span 1;
 }
 
