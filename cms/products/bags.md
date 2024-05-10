@@ -1,7 +1,7 @@
 ---
 title: Bags
 slug: bags
-updated-on: '2024-05-09T13:55:07.853Z'
+updated-on: '2024-05-10T06:11:52.457Z'
 created-on: '2024-04-30T14:23:41.068Z'
 published-on: '2024-05-10T02:11:41.166Z'
 f_image-1:
@@ -24,7 +24,7 @@ f_image-5:
   url: >-
     https://uploads-ssl.webflow.com/66291b60863d1e64d24d554c/6631e323f52a42ecfcd80842_81GyZXnRB5L._AC_UF894%2C1000_QL80_.jpg
   alt: null
-f_index: 5
+f_index: 1
 f_home-featured-product-picture:
   url: >-
     https://uploads-ssl.webflow.com/66291b60863d1e64d24d554c/663cd5aa4f4f83b6a82e740f_pexels-fatin-hisham-877992-2081332.jpg

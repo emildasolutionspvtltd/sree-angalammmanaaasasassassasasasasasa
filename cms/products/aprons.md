@@ -1,7 +1,7 @@
 ---
 title: Aprons
 slug: aprons
-updated-on: '2024-05-09T13:53:41.061Z'
+updated-on: '2024-05-10T06:12:35.592Z'
 created-on: '2024-04-30T14:32:16.904Z'
 published-on: '2024-05-10T02:11:41.166Z'
 f_image-1:
@@ -50,7 +50,7 @@ f_desc-3: >-
 f_subheading-1: Crafting Culinary Creations in Style!
 f_subheading-2: Elevate your cooking experience with our aprons and let your creativity shine
 f_subheading-3: Unleash Your Inner Chef with Our Aprons!
-f_index: 4
+f_index: 2
 f_home-featured-product-picture:
   url: >-
     https://uploads-ssl.webflow.com/66291b60863d1e64d24d554c/66310d055a5c0469ad3550c1_51x3heovwxl-ul1000-.jpg

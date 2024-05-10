@@ -2,7 +2,7 @@
 title: Table linen
 slug: table-linen
 f_products:
-  - cms/products/table-cover.md
+  - cms/products/table-cloth.md
   - cms/products/cushion-cover.md
   - cms/products/chair-cover.md
   - cms/products/napkins.md

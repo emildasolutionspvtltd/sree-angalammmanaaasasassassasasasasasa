@@ -1,7 +1,7 @@
 ---
 title: Kitchen Towel
 slug: kitchen-towel
-updated-on: '2024-05-09T13:53:07.560Z'
+updated-on: '2024-05-10T06:11:37.867Z'
 created-on: '2024-04-30T14:33:15.323Z'
 published-on: '2024-05-10T02:11:41.166Z'
 f_image-1:
@@ -24,7 +24,7 @@ f_image-5:
   url: >-
     https://uploads-ssl.webflow.com/66291b60863d1e64d24d554c/66310a0cb27d609fbc019c38_images%20(1).jpeg
   alt: null
-f_index: 1
+f_index: 5
 f_home-featured-product-picture:
   url: >-
     https://uploads-ssl.webflow.com/66291b60863d1e64d24d554c/663109e2126e19d49557a0dd_65759ba8a76b6f7af7184fe0-better-homes-gardens-adult-bath.jpg

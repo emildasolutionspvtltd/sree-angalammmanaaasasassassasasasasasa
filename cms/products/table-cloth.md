@@ -1,7 +1,7 @@
 ---
-title: Table Cover
-slug: table-cover
-updated-on: '2024-05-09T13:53:48.964Z'
+title: Table Cloth
+slug: table-cloth
+updated-on: '2024-05-10T06:13:09.573Z'
 created-on: '2024-04-30T14:28:02.315Z'
 published-on: '2024-05-10T02:11:41.166Z'
 f_image-1:
@@ -24,7 +24,7 @@ f_image-5:
   url: >-
     https://uploads-ssl.webflow.com/66291b60863d1e64d24d554c/6631e2d05cc79a68c5089336_GinghamWovenCottonTableCloth-Ivory-1.webp
   alt: null
-f_index: 2
+f_index: 4
 f_home-featured-product-picture:
   url: >-
     https://uploads-ssl.webflow.com/66291b60863d1e64d24d554c/6631e2d05cc79a68c5089336_GinghamWovenCottonTableCloth-Ivory-1.webp
