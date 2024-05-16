@@ -1,5 +1,5 @@
 ---
-title: Categories
+title: Products
 permalink: '{{ page.fileSlug }}/index.html'
 layout: products-list.html
 slug: products-list

@@ -3,7 +3,7 @@ backend:
   accept_roles:
     - admin
     - editor
-  branch: main
+  branch: master
 media_folder: theme/assets/images
 public_folder: /assets/images
 collections:
@@ -256,10 +256,6 @@ collections:
         label: Published On
         widget: datetime
         required: false
-      - label: Short description
-        name: body
-        widget: markdown
-        required: false
       - hint: ''
         name: f_featured-on-home-marquee
         label: featured on home marquee
@@ -267,18 +263,53 @@ collections:
         required: false
         default: false
       - hint: ''
-        name: f_home-indexing
-        label: home indexing
-        widget: number
-        required: false
-      - hint: ''
-        name: f_category
-        label: Category
+        name: f_hero-subtext
+        label: hero subtext
         widget: string
         required: false
       - hint: ''
-        name: f_heading
-        label: Heading
+        name: f_cl1-text
+        label: cl1 text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_cl2-text
+        label: cl2 text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_cl3-text
+        label: cl3 text
+        widget: string
+        required: false
+      - hint: ''
+        name: f_subheading-1-2
+        label: subheading 1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_subtext-1
+        label: subtext 1
+        widget: string
+        required: false
+      - hint: ''
+        name: f_subheading-2-2
+        label: subheading 2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_subtext-2
+        label: subtext 2
+        widget: string
+        required: false
+      - hint: ''
+        name: f_subheading-3-2
+        label: subheading 3
+        widget: string
+        required: false
+      - hint: ''
+        name: f_subtext-3
+        label: subtext 3
         widget: string
         required: false
       - hint: ''
@@ -298,51 +329,6 @@ collections:
             label: alt
             widget: string
             required: false
-      - hint: ''
-        name: f_pointer-1-2
-        label: Pointer 1
-        widget: markdown
-        required: false
-      - hint: ''
-        name: f_pointer-2
-        label: Pointer 2
-        widget: markdown
-        required: false
-      - hint: ''
-        name: f_pointer-3
-        label: Pointer 3
-        widget: markdown
-        required: false
-      - hint: ''
-        name: f_subheading-1
-        label: Subheading 1
-        widget: string
-        required: false
-      - hint: ''
-        name: f_desc-1
-        label: Desc 1
-        widget: markdown
-        required: false
-      - hint: ''
-        name: f_subheading-2
-        label: Subheading 2
-        widget: string
-        required: false
-      - hint: ''
-        name: f_desc-2
-        label: Desc 2
-        widget: markdown
-        required: false
-      - hint: ''
-        name: f_subheading-3
-        label: Subheading 3
-        widget: string
-        required: false
-      - hint: ''
-        name: f_desc-3
-        label: Desc 3
-        widget: markdown
-        required: false
       - hint: ''
         name: f_image-1
         label: Image 1
@@ -448,6 +434,11 @@ collections:
       - hint: ''
         name: f_index
         label: Index
+        widget: number
+        required: false
+      - hint: ''
+        name: f_home-indexing
+        label: home indexing
         widget: number
         required: false
       - label: Tags
@@ -707,9 +698,9 @@ collections:
             name: title
             widget: hidden
             default: Texts
-          - hint: 'Original text: Call Us :83645904, key: -35209825'
+          - hint: 'Original text: Call Us : +91 4324 241639, key: -6505ff7'
             label: Text
-            name: '-35209825'
+            name: '-6505ff7'
             widget: string
           - hint: 'Original text: ( Sat - Thursday ), key: 50685868'
             label: Text
@@ -883,9 +874,9 @@ collections:
             label: Text
             name: 6d7a51fd
             widget: text
-          - hint: 'Original text: Get in Touch, key: -53f399f2'
+          - hint: 'Original text: Explore Our Collections, key: -81ea92c'
             label: Text
-            name: '-53f399f2'
+            name: '-81ea92c'
             widget: string
           - hint: >-
               Original text: Tradition meets innovation in global textile
@@ -945,6 +936,14 @@ collections:
             label: Text
             name: '-7fe2d65b'
             widget: string
+          - hint: 'Original text: Designed and developed by , key: -6bb908a7'
+            label: Text
+            name: '-6bb908a7'
+            widget: string
+          - hint: 'Original text: Emilda Solutions, key: -7c9b8a7e'
+            label: Text
+            name: '-7c9b8a7e'
+            widget: string
           - hint: 'Original text: Welcome to Our Family, key: -50db26a1'
             label: Text
             name: '-50db26a1'
@@ -956,15 +955,15 @@ collections:
             name: 2309ed85
             widget: string
           - hint: >-
-              Original text: Welcome to See Angalamman Exports, where three
+              Original text: Welcome to Sree Angalamman Exports, where three
               decades of dedication, expertise, and a commitment to excellence
               have propelled us to the forefront of the textile industry. Since
               our inception in 1985, we have been crafting exceptional handloom
               and power loom fabrics and made-ups. In 1990, we embarked on an
               exciting journey into the realm of export, sharing our
-              craftsmanship with the world., key: -7db06a83
+              craftsmanship with the world., key: -7ee537a9
             label: Text
-            name: '-7db06a83'
+            name: '-7ee537a9'
             widget: text
           - hint: 'Original text: Our Craft, key: 40eac0c'
             label: Text
@@ -1218,21 +1217,11 @@ collections:
             label: Text
             name: 12d3c
             widget: string
-          - hint: 'Original text: No.5, Gowripuram Extension,, key: -73b1a002'
+          - hint: >-
+              Original text: No.5, Gowripuram Extension, 3rd Cross,Anna Nagar,
+              Karur, Tamilnadu - 639002, INDIA., key: 7c3e4978
             label: Text
-            name: '-73b1a002'
-            widget: string
-          - hint: 'Original text: 3rd Cross,Anna Nagar, Karur ,, key: 2655a7c5'
-            label: Text
-            name: 2655a7c5
-            widget: string
-          - hint: 'Original text: Tamilnadu - 639002., key: 4ff0322c'
-            label: Text
-            name: 4ff0322c
-            widget: string
-          - hint: 'Original text: INDIA., key: -7f030e09'
-            label: Text
-            name: '-7f030e09'
+            name: 7c3e4978
             widget: string
           - hint: 'Original text: What’s New !, key: 2239c43f'
             label: Text
@@ -1281,10 +1270,6 @@ collections:
               meets sustainable excellence, key: 6a0ebfd8
             label: Text
             name: 6a0ebfd8
-            widget: string
-          - hint: 'Original text: Explore Our Collections, key: -81ea92c'
-            label: Text
-            name: '-81ea92c'
             widget: string
           - hint: >-
               Original text: The Legacy of Sree Angalamman Exports, key:
@@ -1403,13 +1388,13 @@ collections:
             label: Text
             name: '-13f6436a'
             widget: string
-          - hint: 'Original text: Powered by the Sun:, key: 7c4079aa'
+          - hint: 'Original text: Powered by the Sun, key: 46129890'
             label: Text
-            name: 7c4079aa
+            name: '46129890'
             widget: string
-          - hint: 'Original text:  Our Sustainable Promise, key: 597726a4'
+          - hint: 'Original text: Our Sustainable Promise, key: -26bab53c'
             label: Text
-            name: 597726a4
+            name: '-26bab53c'
             widget: string
           - hint: 'Original text: Eco-friendly Production, key: 56fa4f12'
             label: Text
@@ -1447,6 +1432,18 @@ collections:
             label: Text
             name: '-4e78a9cb'
             widget: text
+          - hint: 'Original text: ‍, key: 200d'
+            label: Text
+            name: 200d
+            widget: string
+          - hint: 'Original text: Quality Craftsmanship , key: -3a370ee2'
+            label: Text
+            name: '-3a370ee2'
+            widget: string
+          - hint: 'Original text: in Every Thread, key: 1fe6a60a'
+            label: Text
+            name: 1fe6a60a
+            widget: string
           - hint: >-
               Original text: Behind every product lies our commitment to ethical
               practices, quality craftsmanship, and a greener planet., key:
@@ -1510,6 +1507,10 @@ collections:
             label: Text
             name: '61661906'
             widget: string
+          - hint: 'Original text: Success in Their Words, key: -169d187b'
+            label: Text
+            name: '-169d187b'
+            widget: string
           - hint: 'Original text: “Beyond Expectations”, key: 295bdb11'
             label: Text
             name: 295bdb11
@@ -1566,6 +1567,10 @@ collections:
             label: Text
             name: 641c939
             widget: string
+          - hint: 'Original text: View All Blogs, key: -7f3d1a09'
+            label: Text
+            name: '-7f3d1a09'
+            widget: string
       - label: Links
         name: links
         file: cms/_data/links.json
@@ -1605,6 +1610,10 @@ collections:
           - hint: 'Original link: #, key: 23'
             label: Link
             name: '23'
+            widget: string
+          - hint: 'Original link: https://www.emildasolutions.com/, key: 6184bf70'
+            label: Link
+            name: 6184bf70
             widget: string
       - label: Images
         name: images
@@ -1745,7 +1754,7 @@ collections:
                 widget: string
                 required: false
           - label: Image
-            name: i3bbc19eb
+            name: 5bdde8a9
             widget: object
             fields:
               - name: url
@@ -2005,6 +2014,19 @@ collections:
                 widget: string
                 required: false
           - label: Image
+            name: i3bbc19eb
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
             name: '-191a2695'
             widget: object
             fields:
@@ -2109,6 +2131,32 @@ collections:
                 widget: string
                 required: false
           - label: Image
+            name: '-6c912bbd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 2915a584
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
             name: '-1ad73d05'
             widget: object
             fields:
@@ -2123,32 +2171,6 @@ collections:
                 required: false
           - label: Image
             name: 4bc51933
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 7f14e4f9
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-1d96ca5c'
             widget: object
             fields:
               - name: url
@@ -2383,32 +2405,6 @@ collections:
                 required: false
           - label: Image
             name: '-753babce'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: '-6c912bbd'
-            widget: object
-            fields:
-              - name: url
-                label: Image Url
-                widget: image
-                allow_multiple: false
-                required: false
-              - name: alt
-                label: Image Alt
-                widget: string
-                required: false
-          - label: Image
-            name: 2915a584
             widget: object
             fields:
               - name: url
