@@ -3,7 +3,7 @@ backend:
   accept_roles:
     - admin
     - editor
-  branch: main
+  branch: master
 media_folder: theme/assets/images
 public_folder: /assets/images
 collections:
@@ -706,11 +706,13 @@ collections:
             label: Text
             name: '50685868'
             widget: string
-          - hint: >-
-              Original text: No.5, Gowripuram Extension, 3rd Cross, key:
-              -2a6ce7bd
+          - hint: 'Original text: No.5 Anga Arch, , key: 7966000b'
             label: Text
-            name: '-2a6ce7bd'
+            name: 7966000b
+            widget: string
+          - hint: 'Original text: Gowripuram Extension, 3rd Cross, key: -589b2561'
+            label: Text
+            name: '-589b2561'
             widget: string
           - hint: 'Original text: Anna Nagar, Karur, India., key: 4d393e6b'
             label: Text
@@ -901,10 +903,10 @@ collections:
             name: 1ed033d4
             widget: string
           - hint: >-
-              Original text: No.5, Gowripuram Extension, 3rd Cross, Anna Nagar,
-              Karur, Tamilnadu,India., key: 1c999b9
+              Original text: No.5 Anga Arch, Gowripuram Extension, 3rd Cross,
+              Anna Nagar, Karur, Tamilnadu,India., key: -381f7498
             label: Text
-            name: 1c999b9
+            name: '-381f7498'
             widget: string
           - hint: 'Original text: Contact, key: -64104400'
             label: Text
@@ -1209,20 +1211,16 @@ collections:
             label: Text
             name: 3ff5b7c
             widget: string
-          - hint: 'Original text: sreeangalamman@gmail.com, key: -5ed32247'
-            label: Text
-            name: '-5ed32247'
-            widget: string
           - hint: 'Original text: Map, key: 12d3c'
             label: Text
             name: 12d3c
             widget: string
           - hint: >-
-              Original text: No.5, Gowripuram Extension, 3rd Cross,Anna Nagar,
-              Karur, Tamilnadu - 639002, INDIA., key: 7c3e4978
+              Original text: No.5 Anga Arch, Gowripuram Extension, 3rd
+              Cross,Anna Nagar, Karur, Tamilnadu - 639002, INDIA., key: 509acca9
             label: Text
-            name: 7c3e4978
-            widget: string
+            name: 509acca9
+            widget: text
           - hint: 'Original text: What’s New !, key: 2239c43f'
             label: Text
             name: 2239c43f
@@ -1614,6 +1612,10 @@ collections:
           - hint: 'Original link: https://www.emildasolutions.com/, key: 6184bf70'
             label: Link
             name: 6184bf70
+            widget: string
+          - hint: 'Original link: mailto:info@sreeangalamman.com, key: 28417c25'
+            label: Link
+            name: 28417c25
             widget: string
       - label: Images
         name: images
